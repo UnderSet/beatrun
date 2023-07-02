@@ -1,14 +1,12 @@
 # beatrun
-Modified beatrun's source code.<br><br>
-There are lua modules, they are for Discord Rich Presence to work, if you want pure Lua just don't extract them, but your Level and Map will not be shown in your Discord status.<br>
-This version of the beatrun works on any version of the game (Chromium or not).
+Modified version of [*Beatrun*](datae.org/beatrun), with source code.
 
 # Installation
-1. **Delete or disable VManip (Base) that downloaded from Workshop!**
-2. **Delete `beatrun` and `vmaniprework` folders in *addons* if you have one!**
+1. **Delete or disable VManip (Base) from Steam Workshop!**
+2. **Delete `beatrun` and `vmaniprework` folders in *addons* if they exist!**
 3. Extract `beatrun` and `vmaniprework` folders to *your_game_folder/garrysmod/addons*.
 4. Extract `lua` folder to *your_game_folder/garrysmod*.
-    * `lua` folder constains modules for Discord Rich Presense to work. They are open source, visit [this](https://github.com/fluffy-servers/gmod-discord-rpc) to see the source.
+    * `lua` folder contains modules for Discord Rich Presense to work. They are open source, visit [this](https://github.com/fluffy-servers/gmod-discord-rpc) to see the source.
 
 ## Changes added by me
 * [Custom online courses database](https://courses.beatrun.ru)! It's free 🤯
@@ -18,7 +16,7 @@ All of the settings below can be changed in the configuration menu
 * Toggle between old and new (like in ME) Kick-Glitch - `Beatrun_OldKickGlitch`.
 * Change HUD's colors - `Beatrun_HUDTextColor`, `Beatrun_HUDCornerColor`, `Beatrun_HUDFloatingXPColor`.
 * Allow players to spawn props without admin rights - `Beatrun_AllowPropSpawn`.
-* Discord Rich Presence (extract `lua` folder to `garrysmod`, along side with `addons` folder).
+* Discord Rich Presence (extract `lua` folder to `garrysmod`, along side with `addons` folder, see step 4 above).
 * Small camera punch when diving.
 * Ability to remove ziplines that created with *Zipline Gun* - RMB.
 * Removed your SteamID from right corner, because I can.
@@ -34,7 +32,7 @@ All of the settings below can be changed in the configuration menu
 
 # All changes and fixes
 * Course saving works with compression and without.
-* Quick turnaround only with `Unarmed`.
+* ~~Quick turnaround only with `Unarmed`.~~ Not present.
 * Fixed leaderboard sorting in gamemodes.
 * Fixed grapple usage in courses and gamemodes.
 * Fixed DataTheft crash when touching data bank.
@@ -47,3 +45,5 @@ All of the settings below can be changed in the configuration menu
 * Allowed punching while crouching.
 * Grapple fixes. Now it moves with entity it attached to and other players can see it.
 * More reliable grappling.
+
+*P.S: datæ really doesn't know how to code, eh?*

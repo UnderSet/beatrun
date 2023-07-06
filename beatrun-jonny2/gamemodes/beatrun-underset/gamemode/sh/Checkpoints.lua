@@ -227,11 +227,8 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
     local vpx = vp.x
     local vpz = vp.z
     local incourse = Course_Name ~= ""
-    if gamehudaccuracy:GetBool() then
-        surface.SetFont("DermaScalabler")
-    elseif not gamehudaccuracy:GetBool() then
-        surface.SetFont("DermaLarge")
-    end
+    surface.SetFont("DermaLarge")
+
     surface.SetTextColor(255, 255, 255, 255)
     local totaltime = CheckpointNumber ~= -1 and math.max(0, CurTime() - Course_StartTime) or Course_EndTime
     
@@ -242,7 +239,7 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
         surface.DrawText(text)
     end
 
-    if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
+--[[	if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
         local speed = "Hello World!"
         local text = "      km/h" 
         if GetConVar("Beatrun_UseImperial") and GetConVar("Beatrun_UseImperial"):GetBool() then --Imperial speedometer mode, only took several headaches
@@ -252,16 +249,13 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
             speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125)
             text = "      km/h"
         end
+]]        
         
-        
-        --local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
-        --text = "      km/h"
+        local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
+        text = "      km/h"
 
-        if gamehudaccuracy:GetBool() then
-            surface.SetFont("DermaScalabler")
-        elseif not gamehudaccuracy:GetBool() then
-            surface.SetFont("DermaLarge")
-        end
+        surface.SetFont("DermaLarge")
+
         surface.SetTextColor(255, 255, 255, 255)
 --        local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
 --        local debug22 = ply:GetVelocity

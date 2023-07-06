@@ -1,0 +1,7 @@
+"beatrun"
+{
+	"base"		"base"
+	"title"		"Beatrun (UnderSet)"
+	"maps"		"^br_"
+	"menusystem"	"1"
+}

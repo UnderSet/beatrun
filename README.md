@@ -8,7 +8,7 @@ Modified version of [*Beatrun*](datae.org/beatrun), with source code.
 4. Extract `lua` folder to *your_game_folder/garrysmod*.
     * `lua` folder contains modules for Discord Rich Presense to work. They are open source, visit [this](https://github.com/fluffy-servers/gmod-discord-rpc) to see the source.
 
-## Changes added by me
+## Changes added by [JonnyBro](https://github.com/jonnybro)
 * [Custom online courses database](https://courses.beatrun.ru)! It's free 🤯
 * Configurations menu - You can find it in the tool menu, in the *Beatrun* Category!\
 All of the settings below can be changed in the configuration menu
@@ -40,10 +40,10 @@ All of the settings below can be changed in the configuration menu
 * Fixed collisions issues.
 * Fixed and tweaked player-player weapon damage.
 * Proper Kick Glitch (Like in original ME: https://www.youtube.com/watch?v=zK5y3NBUStc).
-* Tweaked safety roll, now you can roll under things.
 * You can now dive to your death =).
 * Allowed punching while crouching.
 * Grapple fixes. Now it moves with entity it attached to and other players can see it.
 * More reliable grappling.
 
 *P.S: datæ really doesn't know how to code, eh?*
+<br>*P.P.S: This version is named differently so you can keep this and the [original repo](github.com/jonnybro/beatrun) installed. Have fun ;)*

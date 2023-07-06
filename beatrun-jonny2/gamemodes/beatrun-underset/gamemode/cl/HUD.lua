@@ -168,7 +168,7 @@ local function BeatrunHUD()
 		vp.z = 0
 	end
 
-	local coursename = nil
+	local coursename = " " --Trying to prevent an error GMod keeps throwing at me
 	local customname = hook.Run("BeatrunHUDCourse")
 	coursename = customname and customname or Course_Name ~= "" and "Course: " .. Course_Name or "Freeplay"
 	-- local lastxp = ply.LastXP or 0

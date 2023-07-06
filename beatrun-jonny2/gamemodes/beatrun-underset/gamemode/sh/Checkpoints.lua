@@ -17,29 +17,6 @@ local timetext = ""
 local timealpha = 1000
 local timecolor = color_neutral
 
-if SERVER then
-	util.AddNetworkString("Checkpoint_Hit")
-	util.AddNetworkString("Checkpoint_Finish")
-else
-	surface.CreateFont("BeatrunHUD", {
-		shadow = true,
-		blursize = 0,
-		underline = false,
-		rotary = false,
-		strikeout = false,
-		additive = false,
-		antialias = true,
-		extended = false,
-		scanlines = 0,
-		font = "Roboto",
-		italic = false,
-		outline = false,
-		symbol = false,
-		size = 32,
-		weight = 2000
-	})
-end
-
 function LoadCheckpoints()
 	table.Empty(Checkpoints)
 
@@ -62,6 +39,29 @@ function LoadCheckpoints()
 			Checkpoints[v:GetCPNum()] = v
 		end
 	end
+end
+
+if SERVER then
+	util.AddNetworkString("Checkpoint_Hit")
+	util.AddNetworkString("Checkpoint_Finish")
+else
+	surface.CreateFont("BeatrunHUD", {
+		shadow = true,
+		blursize = 0,
+		underline = false,
+		rotary = false,
+		strikeout = false,
+		additive = false,
+		antialias = true,
+		extended = false,
+		scanlines = 0,
+		font = "Roboto",
+		italic = false,
+		outline = false,
+		symbol = false,
+		size = 32,
+		weight = 2000
+	})
 end
 
 if CLIENT then
@@ -250,8 +250,8 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
             text = "      km/h"
         end
 ]]        
-        
-        local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
+	if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
+        local speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125)
         text = "      km/h"
 
         surface.SetFont("DermaLarge")

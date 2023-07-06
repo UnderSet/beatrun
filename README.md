@@ -3,9 +3,9 @@ Modified version of [*Beatrun*](https://datae.org/beatrun), with source code.
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**
-2. **Delete `beatrun` and `vmaniprework` folders in *addons* if they exist!**
-3. Extract `beatrun` and `vmaniprework` folders to *your_game_folder/garrysmod/addons*.
-4. Extract `lua` folder to *your_game_folder/garrysmod*.
+2. **Delete `beatrun` and `vmaniprework` folders in `addons` if they exist!**
+3. Extract `beatrun` and `vmaniprework` folders to `your_game_folder/garrysmod/addons`.
+4. Extract `lua` folder to `your_game_folder/garrysmod`.
     * `lua` folder contains modules for Discord Rich Presense to work. They are open source, visit [this](https://github.com/fluffy-servers/gmod-discord-rpc) to see the source.
 
 ## Changes added by me

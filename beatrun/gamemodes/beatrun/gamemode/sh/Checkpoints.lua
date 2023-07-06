@@ -221,59 +221,84 @@ local function StartCountdownHUD()
 	end
 end
 
-function CourseHUD()
-	local ply = LocalPlayer()
-	local vp = ply:GetViewPunchAngles()
-	local vpx = vp.x
-	local vpz = vp.z
-	local incourse = Course_Name ~= ""
-	local totaltime = CheckpointNumber ~= -1 and math.max(0, CurTime() - Course_StartTime) or Course_EndTime
+function CourseHUD() --Backported the entire CourseHUD() function from my other Beatrun fork, see https://github.com/underset/beatrun
+    local ply = LocalPlayer()
+    local vp = ply:GetViewPunchAngles()
+    local vpx = vp.x
+    local vpz = vp.z
+    local incourse = Course_Name ~= ""
+    if gamehudaccuracy:GetBool() then
+        surface.SetFont("DermaScalabler")
+    elseif not gamehudaccuracy:GetBool() then
+        surface.SetFont("DermaLarge")
+    end
+    surface.SetTextColor(255, 255, 255, 255)
+    local totaltime = CheckpointNumber ~= -1 and math.max(0, CurTime() - Course_StartTime) or Course_EndTime
+    
+    if incourse then --Moving this here fixed checkpoint loading? Whaaaat?
+        local text = string.FormattedTime(totaltime, "%02i:%02i:%02i")
+        local w, h = surface.GetTextSize(text)
+        surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + vpz)
+        surface.DrawText(text)
+    end
 
-	if incourse then
-		local text = string.FormattedTime(totaltime, "%02i:%02i:%02i")
-		local w, _ = surface.GetTextSize(text)
-		surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + vpz)
-		surface.DrawText(text)
-	end
+    if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
+        local speed = "Hello World!"
+        local text = "      km/h" 
+        if GetConVar("Beatrun_UseImperial") and GetConVar("Beatrun_UseImperial"):GetBool() then --Imperial speedometer mode, only took several headaches
+            speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125 / 1.609344)
+            text = "      mph"
+        elseif GetConVar("Beatrun_UseImperial") and not GetConVar("Beatrun_UseImperial"):GetBool() then
+            speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125)
+            text = "      km/h"
+        end
+        
+        
+        --local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
+        --text = "      km/h"
 
-	if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
-		local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
+        if gamehudaccuracy:GetBool() then
+            surface.SetFont("DermaScalabler")
+        elseif not gamehudaccuracy:GetBool() then
+            surface.SetFont("DermaLarge")
+        end
+        surface.SetTextColor(255, 255, 255, 255)
+--        local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
+--        local debug22 = ply:GetVelocity
+--        surface.DrawText(debug22)
+--        text = "      km/h"
 
-		if speed < 10 then
-			speed = "0" .. speed
-		end
+        if speed < 10 then
+            speed = "0" .. speed .. " "
+        elseif speed < 100 then
+            speed = speed .. " "
+        end
+        
+        w, h = surface.GetTextSize(text)
 
-		text = speed .. " km/h"
-		w, _ = surface.GetTextSize(text)
+                -- Visually "accurate" speedometer (number can overlap with km/h text)
+        surface.SetTextPos(ScrW() * 0.8469 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
+        surface.DrawText(text)
+        surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
+        surface.DrawText(speed)
+    end
 
-		local r, g, b, a = string.ToColor(GetConVar("Beatrun_HUDTextColor"):GetString())
+    if incourse and pbtimes then
+        local text = string.FormattedTime(pbtotal, "%02i:%02i:%02i")
+        local w, h = surface.GetTextSize(text)
+        surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + h + vpz)
+        surface.SetTextColor(255, 255, 255, 125)
+        surface.DrawText(text)
+    end
 
-		surface.SetDrawColor(255, 255, 255, 255)
-		surface.SetFont("BeatrunHUD")
-		surface.SetTextColor(r, g, b, a)
-		surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
-		surface.DrawText(text)
-	end
-
-	if incourse and pbtimes then
-		local text = string.FormattedTime(pbtotal, "%02i:%02i:%02i")
-		local w, h = surface.GetTextSize(text)
-
-		surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + h + vpz)
-		surface.SetTextColor(255, 255, 255, 125)
-		surface.DrawText(text)
-	end
-
-	if timealpha > 0 then
-		local w, _ = surface.GetTextSize(timetext)
-
-		timealpha = math.max(0, timealpha - FrameTime() * 250)
-		timecolor.a = math.min(255, timealpha)
-
-		surface.SetTextPos(ScrW() * 0.5 - w * 0.5 + vpx, ScrH() * 0.3 + vpz)
-		surface.SetTextColor(timecolor)
-		surface.DrawText(timetext)
-	end
+    if timealpha > 0 then
+        local w, h = surface.GetTextSize(timetext)
+        timealpha = math.max(0, timealpha - FrameTime() * 250)
+        timecolor.a = math.min(255, timealpha)
+        surface.SetTextPos(ScrW() * 0.5 - w * 0.5 + vpx, ScrH() * 0.3 + vpz)
+        surface.SetTextColor(timecolor)
+        surface.DrawText(timetext)
+    end
 end
 
 hook.Add("HUDPaint", "CourseHUD", CourseHUD)

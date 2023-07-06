@@ -1,5 +1,5 @@
 # beatrun
-Modified version of [*Beatrun*](datae.org/beatrun), with source code.
+Modified version of [*Beatrun*](https://datae.org/beatrun), with source code.
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**

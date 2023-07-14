@@ -1,5 +1,6 @@
-# beatrun
+# Beatrun
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code.
+Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**
@@ -44,6 +45,3 @@ All of the settings below can be changed in the configuration menu
 * Allowed punching while crouching.
 * Grapple fixes. Now it moves with entity it attached to and other players can see it.
 * More reliable grappling.
-
-*P.S: datæ really doesn't know how to code, eh?*
-<br>*P.P.S: This version is named differently so you can keep this and the [original repo](github.com/jonnybro/beatrun) installed. Have fun ;)*

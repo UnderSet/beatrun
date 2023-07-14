@@ -6,26 +6,26 @@ Modified version of [*Beatrun*](https://datae.org/beatrun), with source code.
 2. **Delete `beatrun` and `vmaniprework` folders in `addons` if they exist!**
 3. Extract `beatrun` and `vmaniprework` folders to `your_game_folder/garrysmod/addons`.
 4. Extract `lua` folder to `your_game_folder/garrysmod`.
-    * `lua` folder contains modules for Discord Rich Presense to work. They are open source, visit [this](https://github.com/fluffy-servers/gmod-discord-rpc) to see the source.
+    * `lua` folder contains modules for Discord Rich Presence. [Source code for those modules are available here.](https://github.com/fluffy-servers/gmod-discord-rpc)
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
 * [Custom online courses database](https://courses.beatrun.ru)! It's free 🤯
 * Configurations menu - You can find it in the tool menu, in the *Beatrun* Category!\
 All of the settings below can be changed in the configuration menu
 * Allow Overdrive usage on the server - `Beatrun_AllowOverdriveInMultiplayer`.
-* Toggle between old and new (like in ME) Kick-Glitch - `Beatrun_OldKickGlitch`.
+* Toggle between old and new (like in ME) kickglitch - `Beatrun_OldKickGlitch`.
 * Change HUD's colors - `Beatrun_HUDTextColor`, `Beatrun_HUDCornerColor`, `Beatrun_HUDFloatingXPColor`.
 * Allow players to spawn props without admin rights - `Beatrun_AllowPropSpawn`.
-* Discord Rich Presence (extract `lua` folder to `garrysmod`, along side with `addons` folder, see step 4 above).
+* Discord Rich Presence *(see step 4 above)*.
 * Small camera punch when diving.
-* Ability to remove ziplines that created with *Zipline Gun* - RMB.
-* Removed your SteamID from right corner, because I can.
+* Removing ziplines made with *Zipline Gun* using RMB
+* Removed your SteamID from right corner
 
 ## TODO
-- [ ] Gamemodes menu
+- [ ] Gamemodes menu *(removed from an older version for some reason)*
 
 ## Fixes and changes from previous version
-* Punching while crouching.
+* Punching while crouching (looks kinda weird).
 * Tweaked safety roll, now you can roll under things.
 * Fixes to Gamemodes menu.
 * Removed unused code.

@@ -9,6 +9,8 @@ if CLIENT then
 	CreateConVar("cl_playerbodygroups", "0", {FCVAR_ARCHIVE, FCVAR_USERINFO, FCVAR_DONTRECORD}, "The bodygroups to use, if the model has any")
 end
 
+EnableBackhop = nil
+
 local PLAYER = {}
 
 PLAYER.DuckSpeed = 0.01		-- How fast to go from not ducking, to ducking
@@ -178,6 +180,7 @@ end
 --
 if SERVER then
 	util.AddNetworkString("BeatrunSpawn")
+	EnableBackhop = CreateConVar("Beatrun_AHB", 1, FCVAR_ARCHIVE, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
 end
 
 function PLAYER:Spawn()
@@ -521,5 +524,44 @@ hook.Add("PlayerSpawn", "ResetStateTransition", function(ply, transition)
 		end
 	end)
 end)
+
+local Beatrun_IsJumping = false
+
+function GM:SetupMove(ply, mv, cmd)
+	if ply:Alive() == false then return end
+
+	if bit.band(mv:GetButtons(), IN_JUMP) ~= 0 and bit.band(mv:GetOldButtons(), IN_JUMP) == 0 and ply:OnGround() then
+		Beatrun_IsJumping = true
+	end
+end
+
+function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GMLambda/Lambda, should be fun (or not)
+    if EnableBackhop:GetBool() then
+        if Beatrun_IsJumping then
+            local forward = ply:EyeAngles()
+            forward.y, forward.r = math.Round(forward.y), math.Round(forward.r) -- Prediction is better if math.Round is used on angles
+            forward.p = 0
+            forward = forward:Forward()
+            local speedBoostPerc = ((not ply:Crouching()) and 0.5) or 0.1
+            local speedAddition = math.abs(mv:GetForwardSpeed() * speedBoostPerc)
+			local maxSpeed = 340
+
+		    local newSpeed = speedAddition + mv:GetVelocity():Length2D()
+
+            if newSpeed > maxSpeed then
+                speedAddition = speedAddition - (newSpeed - maxSpeed)
+            end
+
+            if mv:GetForwardSpeed() < 0 then
+                speedAddition = -speedAddition
+            end
+
+            mv:SetVelocity(forward * speedAddition + mv:GetVelocity())
+        end
+
+        Beatrun_IsJumping = false
+    end
+end
+
 
 player_manager.RegisterClass("player_beatrun", PLAYER, "player_default")

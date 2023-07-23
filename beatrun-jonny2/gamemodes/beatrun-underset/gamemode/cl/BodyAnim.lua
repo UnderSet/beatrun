@@ -468,7 +468,7 @@ function BodyAnimCalcView2(ply, pos, angles, fov)
 		return
 	end
 
-	if IsValid(BodyAnim) and pos:Distance(ply:EyePos()) > 10 then
+	if IsValid(BodyAnim) and pos:Distance(ply:EyePos()) > 20 then
 		if updatethirdperson then
 			ply:SetNoDraw(false)
 			BodyAnim:SetNoDraw(true)

@@ -232,7 +232,7 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
     surface.SetTextColor(255, 255, 255, 255)
     local totaltime = CheckpointNumber ~= -1 and math.max(0, CurTime() - Course_StartTime) or Course_EndTime
     
-    if incourse then --Moving this here fixed checkpoint loading? Whaaaat?
+    if incourse then --Current course time
         local text = string.FormattedTime(totaltime, "%02i:%02i:%02i")
         local w, h = surface.GetTextSize(text)
         surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + vpz)
@@ -277,7 +277,7 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
         surface.DrawText(speed)
     end
 
-    if incourse and pbtimes then
+    if incourse and pbtimes then -- PB time, apparently
         local text = string.FormattedTime(pbtotal, "%02i:%02i:%02i")
         local w, h = surface.GetTextSize(text)
         surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.075 + h + vpz)

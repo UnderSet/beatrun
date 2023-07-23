@@ -9,6 +9,10 @@ Should work on any version of the game. Generally tested on the `x86-64` branch 
 4. Extract `lua` folder to `your_game_folder/garrysmod`.
     * `lua` folder contains modules for Discord Rich Presence. [Source code for those modules are available here.](https://github.com/fluffy-servers/gmod-discord-rpc)
 
+## Stuff added by me
+* Accelerated Backwards Hopping, toggleable with `Beatrun_ABH` (use some kinda Autojump script it makes your life less painful)
+* Readded MaxSpeed (original credits to *c4nk*)
+
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
 * [Custom online courses database](https://courses.beatrun.ru)! It's free 🤯
 * Configurations menu - You can find it in the tool menu, in the *Beatrun* Category!\

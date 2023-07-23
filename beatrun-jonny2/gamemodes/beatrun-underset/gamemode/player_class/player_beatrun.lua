@@ -180,7 +180,7 @@ end
 --
 if SERVER then
 	util.AddNetworkString("BeatrunSpawn")
-	EnableBackhop = CreateConVar("Beatrun_AHB", 1, FCVAR_ARCHIVE, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
+	EnableBackhop = CreateConVar("Beatrun_ABH", 1, FCVAR_ARCHIVE, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
 end
 
 function PLAYER:Spawn()

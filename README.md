@@ -35,7 +35,7 @@ All of the settings below can be changed in the configuration menu
 * Fixes to Gamemodes menu.
 * Removed unused code.
 
-# All changes and fixes
+## All changes and fixes
 * Course saving works with compression and without.
 * ~~Quick turnaround only with `Unarmed`.~~ Not present.
 * Fixed leaderboard sorting in gamemodes.
@@ -49,3 +49,6 @@ All of the settings below can be changed in the configuration menu
 * Allowed punching while crouching.
 * Grapple fixes. Now it moves with entity it attached to and other players can see it.
 * More reliable grappling.
+
+## Credits
+* The [Lambda Gamemode](https://github.com/GMLambda/Lambda) *(and anyone who contributed to it)*: Accelerated Backwards Hopping code (thanks)

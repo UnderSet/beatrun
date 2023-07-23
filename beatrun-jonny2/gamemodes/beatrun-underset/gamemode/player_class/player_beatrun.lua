@@ -544,9 +544,12 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
             forward = forward:Forward()
             local speedBoostPerc = ((not ply:Crouching()) and 0.5) or 0.1
             local speedAddition = math.abs(mv:GetForwardSpeed() * speedBoostPerc)
-			local maxSpeed = 340
+			local maxSpeed = GetConVar("Beatrun_MaxSpeed"):GetInt() + 59
 
-		    local newSpeed = speedAddition + mv:GetVelocity():Length2D()
+			local newSpeed = nil -- Hypercomplicated ME1 style 4km/h jumpboost, see a ME1 speedrun tutorial for details
+			if mv:GetVelocity:Length2D() > maxSpeed then
+				newSpeed = speedAddition + mv:GetVelocity():Length2D()
+			end
 
             if newSpeed > maxSpeed then
                 speedAddition = speedAddition - (newSpeed - maxSpeed)

@@ -178,9 +178,13 @@ end
 --
 -- Called when the player spawns
 --
+if CLIENT then
+	EnableBackhop = CreateClientConVar("Beatrun_ABH", 1, 1, 1, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
+end
+
 if SERVER then
+	EnableBackhop = CreateConVar("Beatrun_ABH", 1, FCVAR_ARCHIVE + FCVAR_REPLICATED, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
 	util.AddNetworkString("BeatrunSpawn")
-	EnableBackhop = CreateConVar("Beatrun_ABH", 1, FCVAR_ARCHIVE, "Accelerated Backwards Hopping, Half-Life 2 style (you should use an autojump script)", 0, 1)
 end
 
 function PLAYER:Spawn()
@@ -575,7 +579,7 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
         end
 
         Beatrun_IsJumping = false
-    else
+    elseif not EnableBackhop:GetBool() then
 		if ply:GetVelocity():Length2D() < GetConVar("Beatrun_MaxSpeed"):GetInt() + 10 and Beatrun_IsJumping then
 			local forward = ply:EyeAngles()
 			forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
@@ -588,6 +592,8 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
 			-- That previous line was a debug function, enable if you like to see something in console every jump
 			MEJumpBoost = true
 		end
+
+		Beatrun_IsJumping = false
 	end
 
 	if ply:OnGround() and MEJumpBoost then -- "Delete" our 3km/h jumpboost when he hits the ground (doesn't work with new kickglitches, that's in work)

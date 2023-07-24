@@ -541,7 +541,7 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
     if EnableBackhop:GetBool() then
         if ply:GetVelocity():Length2D() > GetConVar("Beatrun_MaxSpeed"):GetInt() + 10 and Beatrun_IsJumping then
             local forward = ply:EyeAngles()
-            forward.y, forward.r = math.Round(forward.y), math.Round(forward.r) -- Prediction is better if math.Round is used on angles
+            forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
             forward.p = 0
             forward = forward:Forward()
             local speedBoostPerc = ((not ply:Crouching()) and 0.5) or 0.1
@@ -563,14 +563,14 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
 			-- That previous line was a debug function, enable if you like to see "Processed ABH" in console every longjump
 		elseif ply:GetVelocity():Length2D() < GetConVar("Beatrun_MaxSpeed"):GetInt() + 10 and Beatrun_IsJumping then
             local forward = ply:EyeAngles()
-            forward.y, forward.r = math.Round(forward.y), math.Round(forward.r) -- Prediction is better if math.Round is used on angles
+            forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
             forward.p = 0
             forward = forward:Forward()
 			local speedAddition = 44
 
             mv:SetVelocity(forward * speedAddition + mv:GetVelocity())
-			--print("Processed ABH")
-			-- That previous line was a debug function, enable if you like to see "Processed ABH" in console every longjump
+			--print("Processed speedbost")
+			-- That previous line was a debug function, enable if you like to see something in console every jump
 			MEJumpBoost = true
         end
 
@@ -578,21 +578,21 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
     else
 		if ply:GetVelocity():Length2D() < GetConVar("Beatrun_MaxSpeed"):GetInt() + 10 and Beatrun_IsJumping then
 			local forward = ply:EyeAngles()
-			forward.y, forward.r = math.Round(forward.y), math.Round(forward.r) -- Prediction is better if math.Round is used on angles
+			forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
 			forward.p = 0
 			forward = forward:Forward()
 			local speedAddition = 44
 
 			mv:SetVelocity(forward * speedAddition + mv:GetVelocity())
-			--print("Processed ABH")
-			-- That previous line was a debug function, enable if you like to see "Processed ABH" in console every longjump
+			--print("Processed speedboost")
+			-- That previous line was a debug function, enable if you like to see something in console every jump
 			MEJumpBoost = true
 		end
 	end
 
 	if ply:OnGround() and MEJumpBoost then -- "Delete" our 3km/h jumpboost when he hits the ground (doesn't work with new kickglitches, that's in work)
 		local forward = ply:EyeAngles()
-		forward.y, forward.r = math.Round(forward.y), math.Round(forward.r) -- Prediction is better if math.Round is used on angles
+		forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
 		forward.p = 0
 		forward = forward:Forward()
 		local speedAddition = 44

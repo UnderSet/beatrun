@@ -224,9 +224,14 @@ end
 function CourseHUD() --Backported the entire CourseHUD() function from my other Beatrun fork, see https://github.com/underset/beatrun
     local ply = LocalPlayer()
     local vp = ply:GetViewPunchAngles()
-    local vpx = vp.x
-    local vpz = vp.z
-    local incourse = Course_Name ~= ""
+    local vpx = 0
+    local vpz = 0
+	local incourse = Course_Name ~= ""
+
+	if GetConVar("Beatrun_HUDSway"):GetBool() then
+		vpx = vp.x
+		vpz = vp.z
+	end
     surface.SetFont("DermaLarge")
 
     surface.SetTextColor(255, 255, 255, 255)
@@ -250,7 +255,14 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
             text = "      km/h"
         end
 ]]        
-	if GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
+	PlayingCourse = false
+	ShowFreeplaySpeed = false
+	if incourse and not BuildMode then
+		PlayingCourse = true
+	elseif GetConVar("Beatrun_HUDHidden") and not GetConVar("Beatrun_HUDHidden"):GetBool() and not BuildMode then
+		ShowFreeplaySpeed = true
+	end
+	if (PlayingCourse or ShowFreeplaySpeed) and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
         local speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125)
         text = "      km/h"
 

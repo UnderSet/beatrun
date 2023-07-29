@@ -54,3 +54,4 @@ All of the settings below can be changed in the configuration menu
 
 ## Credits
 * The [Lambda Gamemode](https://github.com/GMLambda/Lambda) *(and anyone who contributed to it)*: Accelerated Backwards Hopping code (thanks)
+* [This website](http://www17.plala.or.jp/xxxxxxx/00ff/) for the HeadsUpDaisy font used *(damn you datæ for not crediting them)*

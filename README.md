@@ -1,6 +1,8 @@
 # Beatrun
-Modified version of [*Beatrun*](https://datae.org/beatrun), with source code.
+Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
 Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
+
+Want the new animations in the original repository? Nab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)*
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**

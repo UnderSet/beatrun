@@ -282,6 +282,8 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
         
         w, h = surface.GetTextSize(text)
 
+		w = w or 0 -- Backported, no clue what this does
+
                 -- Visually "accurate" speedometer (number can overlap with km/h text)
         surface.SetTextPos(ScrW() * 0.8469 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
         surface.DrawText(text)

@@ -16,6 +16,9 @@ Want the new animations in the original repository? Nab 'em [here!](https://gith
 * Readded MaxSpeed (original credits to *c4nk*)
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
+* Jumping while walking
+* Time Trial menu tweaks
+* Time Trial Checkpoint arrows
 * [Custom online courses database](https://courses.beatrun.ru)! It's free 🤯
 * Configurations menu - You can find it in the tool menu, in the *Beatrun* Category!\
 All of the settings below can be changed in the configuration menu

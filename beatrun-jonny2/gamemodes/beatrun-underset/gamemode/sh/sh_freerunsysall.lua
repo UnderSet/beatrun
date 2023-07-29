@@ -248,7 +248,8 @@ hook.Add("SetupMove", "MESetupMove", function(ply, mv, cmd)
 		ply:SetMESprintDelay(0)
 		ply:SetMEAng(0)
 
-		mv:SetButtons(bit.band(mv:GetButtons(), bit.bnot(IN_JUMP)))
+		--mv:SetButtons(bit.band(mv:GetButtons(), bit.bnot(IN_JUMP)))
+		--Why did datæ block jumping while walking in the first place?!
 	end
 
 	local ang = mv:GetAngles()

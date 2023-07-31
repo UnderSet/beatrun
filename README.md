@@ -2,7 +2,7 @@
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
 Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
 
-Want the new animations in the original repository? Nab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)* *(Note: You'll need to download every animation file separately due to GitHub not being very end-user-friendly.)*
+Want the new animations in the original repository? Grab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)* *(Note: You'll need to download every animation file separately due to GitHub not being very end-user-friendly.)*
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**
@@ -32,8 +32,8 @@ All of the settings below can be changed in the configuration menu
 * Removing ziplines made with *Zipline Gun* using RMB
 * Removed your SteamID from right corner
 
-## TODO
-- [ ] Gamemodes menu *(removed from an older version for some reason)*
+<!-- ## TODO
+- [ ] Gamemodes menu *(removed from an older version for some reason)*-->
 
 ## Fixes and changes from previous version
 * Punching while crouching (looks kinda weird).

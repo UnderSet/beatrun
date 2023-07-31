@@ -2,13 +2,13 @@
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
 Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
 
-Want the new animations in the original repository? Nab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)*
+Want the new animations in the original repository? Nab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)* *(Note: You'll need to download every animation file separately due to GitHub not being very end-user-friendly.)*
 
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**
-2. **Delete `beatrun` and `vmaniprework` folders in `addons` if they exist!**
-3. Extract `beatrun` and `vmaniprework` folders to `your_game_folder/garrysmod/addons`.
-4. Extract `lua` folder to `your_game_folder/garrysmod`.
+2. **Delete `beatrun-jonny2` and `vmaniprework` folders in `addons` if they exist!**
+3. Extract `beatrun-jonny2` and `vmaniprework` folders to `your_game_folder/garrysmod/addons`.
+4. Extract `lua` folder to `<Garry's Mod directory here>/garrysmod`.
     * `lua` folder contains modules for Discord Rich Presence. [Source code for those modules are available here.](https://github.com/fluffy-servers/gmod-discord-rpc)
 
 ## Stuff added by me
@@ -16,6 +16,7 @@ Want the new animations in the original repository? Nab 'em [here!](https://gith
 * Readded MaxSpeed (original credits to *c4nk*)
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
+* Getting off of ladders
 * Jumping while walking
 * Time Trial menu tweaks
 * Time Trial Checkpoint arrows

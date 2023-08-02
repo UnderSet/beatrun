@@ -4,6 +4,8 @@ Should work on any version of the game. Generally tested on the `x86-64` branch 
 
 Want the new animations in the original repository? Grab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)* *(Note: You'll need to download every animation file separately due to GitHub not being very end-user-friendly.)*
 
+*please just use jonny's version its much better than the stuff i hacked together here and you get updates directly from there without having to wait for me to manually pull commits in please*
+
 # Installation
 1. **Delete or disable VManip (Base) from Steam Workshop!**
 2. **Delete `beatrun-jonny2` and `vmaniprework` folders in `addons` if they exist!**
@@ -13,6 +15,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 
 ## Stuff added by me
 * Accelerated Backwards Hopping, toggleable with `Beatrun_ABH` (use some kinda Autojump script it makes your life less painful)
+* 3km/h speedboost on jump that resets on ground, ME1 style
 * Readded MaxSpeed (original credits to *c4nk*)
 * Fixed NASA weapon sprint acceleration
 

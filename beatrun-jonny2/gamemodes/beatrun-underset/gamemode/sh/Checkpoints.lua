@@ -41,6 +41,34 @@ function LoadCheckpoints()
 	end
 end
 
+if CLIENT then
+	local scalefactor = ScrH() / 1080
+
+	local function SpeedometerFonts()
+		surface.CreateFont("DermaScaler", {
+			shadow = false,
+			blursize = 0,
+			underline = false,
+			rotary = false,
+			strikeout = false,
+			additive = false,
+			antialias = true,
+			extended = false,
+			scanlines = 0,
+			font = "Roboto",
+			italic = false,
+			outline = false,
+			symbol = false,
+			size = 32 * scalefactor,
+			weight = 20
+		})
+	end
+
+	SpeedometerFonts()
+
+	hook.Add("OnScreenSizeChanged", "Beatrun_FontRescale", SpeedometerFonts())
+end
+
 if SERVER then
 	util.AddNetworkString("Checkpoint_Hit")
 	util.AddNetworkString("Checkpoint_Finish")
@@ -228,11 +256,13 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
     local vpz = 0
 	local incourse = Course_Name ~= ""
 
+	scalefactor = ScrH() / 1080
+
 	if GetConVar("Beatrun_HUDSway"):GetBool() then
 		vpx = vp.x
 		vpz = vp.z
 	end
-    surface.SetFont("DermaLarge")
+    surface.SetFont("DermaScaler")
 
     surface.SetTextColor(255, 255, 255, 255)
     local totaltime = CheckpointNumber ~= -1 and math.max(0, CurTime() - Course_StartTime) or Course_EndTime
@@ -264,9 +294,9 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
 	end
 	if (PlayingCourse or ShowFreeplaySpeed) and hook.Run("BeatrunDrawHUD") ~= false and not ply.InReplay then
         local speed = math.Round(ply:GetVelocity():Length2D() * 0.06858125)
-        text = "      km/h"
+        text = "km/h"
 
-        surface.SetFont("DermaLarge")
+        surface.SetFont("DermaScaler")
 
         surface.SetTextColor(255, 255, 255, 255)
 --        local speed = math.Round(ply:GetVelocity():Length() * 0.06858125)
@@ -285,9 +315,9 @@ function CourseHUD() --Backported the entire CourseHUD() function from my other 
 		w = w or 0 -- Backported, no clue what this does
 
                 -- Visually "accurate" speedometer (number can overlap with km/h text)
-        surface.SetTextPos(ScrW() * 0.8469 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
+        surface.SetTextPos(ScrW() * 0.8469 + vpx, ScrH() * 0.85 + vpz)
         surface.DrawText(text)
-        surface.SetTextPos(ScrW() * 0.85 - w * 0.5 + vpx, ScrH() * 0.85 + vpz)
+        surface.SetTextPos(ScrW() * 0.8469 - 35.712 * (ScrH() / 1080) + vpx, ScrH() * 0.85 + vpz)
         surface.DrawText(speed)
     end
 

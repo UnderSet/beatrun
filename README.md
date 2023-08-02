@@ -14,6 +14,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 ## Stuff added by me
 * Accelerated Backwards Hopping, toggleable with `Beatrun_ABH` (use some kinda Autojump script it makes your life less painful)
 * Readded MaxSpeed (original credits to *c4nk*)
+* Fixed NASA weapon sprint acceleration
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
 * Getting off of ladders

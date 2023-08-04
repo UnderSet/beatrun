@@ -570,7 +570,7 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
             forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
             forward.p = 0
             forward = forward:Forward()
-			local speedAddition = 44
+			local speedAddition = 50
 
             mv:SetVelocity(forward * speedAddition + mv:GetVelocity())
 			--print("Processed speedbost")
@@ -585,7 +585,7 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
 			forward.y, forward.r = math.Round(forward.y), math.Round(forward.r)
 			forward.p = 0
 			forward = forward:Forward()
-			local speedAddition = 44
+			local speedAddition = 50
 
 			mv:SetVelocity(forward * speedAddition + mv:GetVelocity())
 			--print("Processed speedboost")

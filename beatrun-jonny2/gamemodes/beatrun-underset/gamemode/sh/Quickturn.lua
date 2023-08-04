@@ -5,7 +5,9 @@ end
 function DoJumpTurn(lookbehind)
 	if not LocalPlayer():Alive() then return end
 
-	VMLegs:Remove()
+	if VMLegs and VMLegs:IsActive() then
+		VMLegs:Remove()
+	end
 
 	BodyAnim:SetSequence("jumpturnfly")
 	BodyAnimCycle = 0

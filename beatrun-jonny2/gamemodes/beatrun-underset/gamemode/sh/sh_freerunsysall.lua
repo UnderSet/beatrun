@@ -1,6 +1,6 @@
 local quakejump = CreateConVar("Beatrun_QuakeJump", 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE})
 local sidestep = CreateConVar("Beatrun_SideStep", 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE})
-local max_speed = CreateConVar("Beatrun_MaxSpeed", 325, {FCVAR_REPLICATED, FCVAR_ARCHIVE})
+local max_speed = CreateConVar("Beatrun_MaxSpeed", 325, {FCVAR_REPLICATED, FCVAR_ARCHIVE}, "Maximum movement speed. 325 is default. Calculated in Source units per second.")
 
 local function Hardland(jt)
 	local ply = LocalPlayer()

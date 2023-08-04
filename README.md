@@ -7,12 +7,13 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 *please just use jonny's version its much better than the stuff i hacked together here and you get updates directly from there without having to wait for me to manually pull commits in please*
 
 # Installation
-1. **Delete or disable VManip (Base) from Steam Workshop!**
-2. **Delete `beatrun-jonny2` and `vmaniprework` folders in `addons` if they exist!**
-3. Extract `beatrun-jonny2` and `vmaniprework` folders to `your_game_folder/garrysmod/addons`.
-4. Extract `lua` folder to `<Garry's Mod directory here>/garrysmod`.
-    * `lua` folder contains modules for Discord Rich Presence. [Source code for those modules are available here.](https://github.com/fluffy-servers/gmod-discord-rpc)
+*Beatrun shouldn't conflict with the Workshop [VManip Base](https://steamcommunity.com/sharedfiles/filedetails/?id=2155366756) anymore.*
 
+0. **Install Workshop VManip first.** If you're using a pirated version, God help you.
+1. **Delete `beatrun-jonny2` folder in `addons` if it exists!**
+2. Extract `beatrun-jonny2` folder to `your_game_folder/garrysmod/addons`.
+3. Extract `lua` folder to `<Garry's Mod directory here>/garrysmod`.
+    * `lua` folder contains modules for Discord Rich Presence. [Source code for those modules are available here.](https://github.com/fluffy-servers/gmod-discord-rpc)
 ## Stuff added by me
 * Accelerated Backwards Hopping, toggleable with `Beatrun_ABH` (use some kinda Autojump script it makes your life less painful)
 * 3km/h speedboost on jump that resets on ground, ME1 style
@@ -20,6 +21,8 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 * Fixed NASA weapon sprint acceleration
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
+* 
+* Removed custom VManip *(use Workshop version instead, link on top)*
 * Getting off of ladders
 * Jumping while walking
 * Time Trial menu tweaks

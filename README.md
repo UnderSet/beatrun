@@ -20,7 +20,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 * Fixed NASA weapon sprint acceleration
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
-* Getting off of ladders
+* Getting off of ladders *(won't work on x86-64, maybe Facepunch broke building that branch?)*
 * Jumping while walking
 * Time Trial menu tweaks
 * Time Trial Checkpoint arrows

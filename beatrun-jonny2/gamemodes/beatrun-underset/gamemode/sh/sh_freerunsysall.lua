@@ -260,13 +260,9 @@ hook.Add("SetupMove", "MESetupMove", function(ply, mv, cmd)
 	local MEAngDiff = math.abs((MEAng - ply:GetMEAng()) * 100)
 	local weaponspeed = math.floor(max_speed:GetInt() / 1.66)
 	local activewep = ply:GetActiveWeapon()
-	local clampwepsprint = 250
-	if max_speed:GetInt() <= 250 then
-		clampwepsprint = max_speed:GetInt()
-	end
 
 	if IsValid(activewep) and activewep:GetClass() ~= "runnerhands" then
-		weaponspeed = math.Clamp(math.floor(max_speed:GetInt() / 1.3), clampwepsprint, 9999999999999)
+		weaponspeed = 250
 	end
 
 	if (ismoving or ply:GetMantle() ~= 0) and ply:GetMESprintDelay() < CurTime() and (cmd:KeyDown(IN_SPEED) or ply:GetMantle() ~= 0 or not ply:OnGround() or (not ply:OnGround() or ply:GetMantle() ~= 0) and mv:GetVelocity().z > -450) then

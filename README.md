@@ -1,6 +1,11 @@
 # Beatrun
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
-Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
+Should work on any version of the game. Tested myself on the `x86-64` beta branch of the game.
+
+Contains no malware or malicious code or malicious networking, however it does have the following:
+* Binaries for Discord and Steam Presence ([`/lua/bin`](/lua/bin) folder)
+* Online course functionality ([`gamemode/cl/OnlineCourse.lua`](/beatrun-jonny2/gamemodes/beatrun-underset/gamemode/cl/OnlineCourse.lua) file)
+You can remove them if you wish to do so.
 
 Want the new animations in the original repository? Grab 'em [here!](https://download-directory.github.io/?url=https://github.com/JonnyBro/beatrun/tree/master/beatrun/Beatrun%20Reanimated) *(credits to* modeltexturebones*​)* *(Note: The link goes to a third-party website for downloading the folder, because GitHub.)*
 
@@ -9,7 +14,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://dow
 # Installation
 *Beatrun shouldn't conflict with the Workshop [VManip Base](https://steamcommunity.com/sharedfiles/filedetails/?id=2155366756) anymore.*
 
-0. **Install Workshop VManip first.** If you're using a pirated version, God help you.
+0. **Install Workshop VManip first.** *If you're using a pirated version, God help you.*
 1. **Delete `beatrun-jonny2` folder in `addons` if it exists!**
 2. Extract `beatrun-jonny2` folder to `your_game_folder/garrysmod/addons`.
 3. Extract `lua` folder to `<Garry's Mod directory here>/garrysmod`.
@@ -18,7 +23,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://dow
 * Accelerated Backwards Hopping, toggleable with `Beatrun_ABH` (use some kinda Autojump script it makes your life less painful)
 * 3km/h speedboost on jump that resets on ground, ME1 style
 * Readded MaxSpeed (original credits to *c4nk*)
-* Fixed NASA weapon sprint acceleration
+* Fixed NASA weapon sprint acceleration with MaxSpeed *(feel free to yoink this)*
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
 * Removed custom VManip *(use Workshop version instead, link on top)*

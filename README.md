@@ -2,7 +2,7 @@
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
 Should work on any version of the game. Generally tested on the `x86-64` branch of Garry's Mod.
 
-Want the new animations in the original repository? Grab 'em [here!](https://github.com/JonnyBro/beatrun/tree/master/beatrun/_new) *(credits to* modeltexturebones*​)* *(Note: You'll need to download every animation file separately due to GitHub not being very end-user-friendly.)*
+Want the new animations in the original repository? Grab 'em [here!](https://download-directory.github.io/?url=https://github.com/JonnyBro/beatrun/tree/master/beatrun/Beatrun%20Reanimated) *(credits to* modeltexturebones*​)* *(Note: The link goes to a third-party website for downloading the folder, because GitHub.)*
 
 *please just use jonny's version its much better than the stuff i hacked together here and you get updates directly from there without having to wait for me to manually pull commits in please*
 
@@ -21,7 +21,6 @@ Want the new animations in the original repository? Grab 'em [here!](https://git
 * Fixed NASA weapon sprint acceleration
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
-* 
 * Removed custom VManip *(use Workshop version instead, link on top)*
 * Getting off of ladders
 * Jumping while walking

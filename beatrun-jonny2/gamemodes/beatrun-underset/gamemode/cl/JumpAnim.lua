@@ -232,7 +232,7 @@ local eventslut = {
 	jumpstill = "jumpstill",
 	climb = "hanghardstartvertical",
 	stepup = "stepuprightleg",
-	springboard = "jumpfast",
+	springboard = "springboardleftleg",
 	ladderexittoplefthand = "ladderexittoplefthand",
 	slide45 = "meslidestart45",
 	sidestepright = "dodgejumpright",
@@ -345,7 +345,7 @@ local transitionanims = {
 	hangheaveup = "runfwd",
 	dodgejumpleft = "stand",
 	walkbalancefalloffleft = "jumpair",
-	vaultover = "runfwd",
+	vaultover = "jumpair",
 	meleeairhit = "jumpair",
 	dodgejumpright = "stand",
 	meleeair = "jumpair",
@@ -1471,8 +1471,6 @@ local function JumpThink()
 
 					if not ply:Crouching() then
 						BodyAnim:SetSequence(BodyAnim:LookupSequence("runbwd"))
-					elseif ply:Crouching() and moveback then
-						BodyAnim:SetSequence(BodyAnim:LookupSequence("crouchbwd"))
 					else
 						BodyAnim:SetSequence(BodyAnim:LookupSequence("crouchbwd"))
 					end
@@ -1484,6 +1482,8 @@ local function JumpThink()
 
 						if ply:KeyDown(IN_FORWARD) then
 							moveback = false
+						elseif ply:Crouching() and moveback then
+							BodyAnim:SetSequence(BodyAnim:LookupSequence("crouchbwd"))
 						else
 							BodyAnim:SetSequence(BodyAnim:LookupSequence("runbwd"))
 						end

@@ -66,7 +66,7 @@ if CLIENT then
 
 	SpeedometerFonts()
 
-	hook.Add("OnScreenSizeChanged", "Beatrun_FontRescale", SpeedometerFonts())
+	hook.Add("OnScreenSizeChanged", "Beatrun_FontRescale", SpeedometerFonts)
 end
 
 if SERVER then

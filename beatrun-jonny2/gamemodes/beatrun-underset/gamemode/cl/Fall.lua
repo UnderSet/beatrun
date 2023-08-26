@@ -13,10 +13,14 @@ local beatvol = 0.3
 local blurpass = 0
 local vignettealpha = 0
 
+local FallCheckToggle = CreateClientConVar("Beatrun_FallChecks", 1, true, false, "Fall checks like in ME. In layman's terms or if you haven't played Mirror's Edge (Catalyst), if you fall fast enough your camera and movement will be locked and a falling animation will play.")
+
 local function FallCheck()
 	local ply = LocalPlayer()
 	if not IsValid(ply) then return end
 	local speed = ply:GetVelocity().z
+
+	if not FallCheckToggle:GetBool() then return end
 
 	if not ply.FallStatic and speed <= -800 and ply:GetMoveType() ~= MOVETYPE_NOCLIP and ply:GetDive() == false then
 		ply:EmitSound("FallStatic")

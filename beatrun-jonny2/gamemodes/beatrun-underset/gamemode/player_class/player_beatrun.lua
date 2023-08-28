@@ -545,6 +545,7 @@ end
 local MEJumpBoost = false
 
 function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GMLambda/Lambda, should be fun (or not)
+	if !ply:KeyDown(IN_FORWARD) then return end
     if EnableBackhop:GetBool() then
         if ply:GetVelocity():Length2D() > GetConVar("Beatrun_MaxSpeed"):GetInt() + 10 and Beatrun_IsJumping then
             local forward = ply:EyeAngles()

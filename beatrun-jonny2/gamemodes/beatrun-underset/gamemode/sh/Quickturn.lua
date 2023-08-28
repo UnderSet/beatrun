@@ -1,9 +1,11 @@
 if CLIENT then
 	QuickturnGround = CreateClientConVar("Beatrun_QuickturnGround", "0", true, true, "Enables quickturning with secondary attack while on the ground", 0, 1)
+	LieDownArmed = CreateClientConVar("Beatrun_UnarmedFallbackOnly", "0", true, true, "Allow falling back ONLY with the Unarmed SWEP.")
 end
 
 function DoJumpTurn(lookbehind)
 	if not LocalPlayer():Alive() then return end
+	if (LocalPlayer():GetActiveWeapon():GetClass() != "runnerhands" and ply:GetInfoNum("Beatrun_UnarmedFallbackOnly", 0) == 1) then return end
 
 	if VMLegs and VMLegs:IsActive() then
 		VMLegs:Remove()
@@ -80,6 +82,7 @@ local function Quickturn(ply, mv, cmd)
 	end
 
 	if not ply:GetQuickturn() and not ply:GetJumpTurn() and not ply:GetCrouchJump() and not ply:GetGrappling() and keypressed and not mv:KeyDown(IN_MOVELEFT) and not mv:KeyDown(IN_MOVERIGHT) and (ply:GetWallrun() > 0 or not ply:OnGround() or ply:GetInfoNum("Beatrun_QuickturnGround", 0) == 1 and not ply:Crouching() and ply:GetActiveWeapon():GetClass() == "runnerhands") then
+		if (ply:GetActiveWeapon():GetClass() != "runnerhands" and ply:GetInfoNum("Beatrun_UnarmedFallbackOnly", 0) == 1) then return end
 		if ply:GetWallrun() == 0 and not ply:OnGround() then
 			local eyedir = cmd:GetViewAngles()
 			eyedir.x = 0

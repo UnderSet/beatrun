@@ -612,5 +612,16 @@ function GM:FinishMove(ply, mv) -- Yoinked ABH stuff from https://github.com/GML
 	end
 end
 
+function GM:FinishMove(ply, mv)
+	-- Surprised, eh? Just read the code and you'll see why mate.
+	local fovmult = (ply:InOverdrive() and 1.1) or 1
+
+	if ply:KeyReleased(IN_ZOOM) then
+		-- Zooming, when applicable, fucks our FOV up
+		-- This fixes that almost entirely, and (attempts to) replicates the HL2 zoomout
+		-- for your pleasure.
+		timer.Simple(0, function() ply:SetFOV(ply:GetInfoNum("Beatrun_FOV", 120) * fovmult, 0.4) end)
+	end
+end
 
 player_manager.RegisterClass("player_beatrun", PLAYER, "player_default")

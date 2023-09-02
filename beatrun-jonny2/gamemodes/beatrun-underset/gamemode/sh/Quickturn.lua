@@ -5,7 +5,7 @@ end
 
 function DoJumpTurn(lookbehind)
 	if not LocalPlayer():Alive() then return end
-	if (LocalPlayer():GetActiveWeapon():GetClass() != "runnerhands" and ply:GetInfoNum("Beatrun_UnarmedFallbackOnly", 0) == 1) then return end
+	if (LocalPlayer():GetActiveWeapon():GetClass() != "runnerhands" and LocalPlayer():GetInfoNum("Beatrun_UnarmedFallbackOnly", 0) == 1) then return end
 
 	if VMLegs and VMLegs:IsActive() then
 		VMLegs:Remove()

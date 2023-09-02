@@ -43,11 +43,11 @@ function SWEP:Deploy()
 	self:CallOnClient("Deploy")
 	self:SetHoldType( self.HoldType )
 	self:SendWeaponAnim(ACT_VM_DRAW)
-	self.points = {}
-	self.center = Vector()
 end
 
 function SWEP:Initialize()
+	self.points = {}
+	self.center = Vector()
 end
 
 function SWEP:Think()

@@ -319,7 +319,8 @@ local arminterrupts = {
 	punchright = true,
 	doorbash = true,
 	punchmid = true,
-	punchleft = true
+	punchleft = true,
+	jumpturnflypiecesign = true
 }
 
 local transitionanims = {
@@ -436,7 +437,14 @@ local worldarm = {
 	ladderclimbdownfast = true,
 	ladderclimbuprighthand = true,
 	ladderclimbhangstart = true,
-	snatchscar = true
+	snatchscar = true,
+	jumpcoil = true,
+	jumpturnlandidle = true,
+	jumpturnland = true,
+	wallrunright = true,
+	wallrunleft = true,
+	wallrunrightstart = true,
+	wallrunleftstart = true
 }
 
 local ignorezarm = {

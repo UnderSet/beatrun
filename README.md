@@ -24,6 +24,7 @@ Want the new animations in the original repository? Grab 'em [here!](https://dow
 * 3km/h speedboost on jump that resets on ground, ME1 style
 * Readded MaxSpeed (original credits to *c4nk*)
 * Fixed NASA weapon sprint acceleration with MaxSpeed *(feel free to yoink this)*
+* Falling on your back only with Unarmed *(toggleable with `Beatrun_UnarmedFallbackOnly`)*
 
 ## Changes added by [JonnyBro](https://github.com/jonnybro)
 * Removed custom VManip *(use Workshop version instead, link on top)*

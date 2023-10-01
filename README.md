@@ -1,3 +1,5 @@
+## Go use the Beatrun versions at [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun) or from [datæ's website](https://datae.org/beatrun). I won't be maintaining this one any longer.
+
 # Beatrun
 Modified version of [*Beatrun*](https://datae.org/beatrun), with source code. Forked from [JonnyBro/beatrun](https://github.com/JonnyBro/beatrun).
 Should work on any version of the game. Tested myself on the `x86-64` beta branch of the game.

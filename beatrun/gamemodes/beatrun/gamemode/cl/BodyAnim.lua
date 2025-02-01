@@ -468,8 +468,8 @@ hook.Add("Think", "BodyAnimThink", function()
 	end
 end)
 
-local BodyAnimPosEase = Vector()
-local BodyAnimPosEaseLerp = 1
+BodyAnimPosEase = Vector()
+BodyAnimPosEaseLerp = 1
 
 function BodyAnimSetEase(pos)
 	BodyAnimPosEase:Set(pos)

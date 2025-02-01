@@ -12,6 +12,17 @@ if CLIENT then
 end
 
 local PLAYER = {}
+ -- needed to prevent lua errors and camera break since I'm too lazy to refactor
+local view = {}
+local lastattachpos = Vector(0, 0, 0)
+local lastatt, savedatt = nil, nil
+local lerpchangeatt = 1
+local lastattdata = nil
+local lerpedpos = Vector()
+local lastlockang = false
+local lastlockangstart = Angle()
+local lasteyeang = Angle()
+local updatethirdperson = true
 
 PLAYER.DuckSpeed = 0.01 -- How fast to go from not ducking, to ducking
 PLAYER.UnDuckSpeed = 0.01 -- How fast to go from ducking, to not ducking
@@ -351,6 +362,9 @@ end
 function PLAYER:CalcView(viewdata)
 	local mult = (self.Player:InOverdrive() and 1.1) or 1
 	local fov = GetConVar("Beatrun_FOV"):GetInt()
+
+	local pos = viewdata.origin
+	local angles = viewdata.angles
 
 	if SERVER then return end
 	-- just in case, the following code was only meant for clientside

@@ -348,11 +348,252 @@ function PLAYER:CreateMove(cmd)
 	if self.TauntCam:CreateMove(cmd, self.Player, self.Player:IsPlayingTaunt()) then return true end
 end
 
-function PLAYER:CalcView(view)
+function PLAYER:CalcView(viewdata)
 	local mult = (self.Player:InOverdrive() and 1.1) or 1
 	local fov = GetConVar("Beatrun_FOV"):GetInt()
 
-	view.fov = fov * mult
+	if SERVER then return end
+	-- just in case, the following code was only meant for clientside
+
+	if self.Player:InVehicle() then
+		RemoveBodyAnim()
+
+		return
+	end
+
+	if has_tool_equipped then
+		BodyAnim:SetNoDraw(true)
+		BodyAnim:SetRenderOrigin(pos * 1000)
+
+		return
+	end
+
+	if IsValid(BodyAnim) and pos:Distance(self.Player:EyePos()) > 20 then
+		if updatethirdperson then
+			self.Player:SetNoDraw(false)
+			BodyAnim:SetNoDraw(true)
+			BodyAnim:SetRenderOrigin(pos * 1000)
+			updatethirdperson = false
+		end
+
+		return
+	else
+		updatethirdperson = true
+	end
+
+	if IsValid(BodyAnim) or attach ~= nil then
+		if IsValid(BodyAnim) then
+			if followplayer then
+				local pos = self.Player:GetPos()
+
+				if BodyAnimCrouchLerp < 1 and (BodyAnimCrouchLerp ~= 0 or math.abs(BodyAnimCrouchLerpZ - pos.z) > 16 or math.abs(self.Player:GetNW2Float("BodyAnimCrouchLerpZ") - pos.z) > 16) then
+					if self.Player:OnGround() then
+						BodyAnimCrouchLerp = 1
+					end
+
+					if self.Player:Crouching() then
+						local from = BodyAnimCrouchLerpZ
+
+						if self.Player:UsingRH() then
+							from = self.Player:EyePos().z - 64
+						end
+
+						pos.z = Lerp(BodyAnimCrouchLerp, from, pos.z)
+						BodyAnimCrouchLerp = math.Approach(BodyAnimCrouchLerp, 1, FrameTime() * 5)
+					end
+				end
+
+				if BodyAnimPosEaseLerp < 1 then
+					local easedpos = LerpVector(BodyAnimPosEaseLerp, BodyAnimPosEase, pos)
+					BodyAnimPosEaseLerp = math.Approach(BodyAnimPosEaseLerp, 1, FrameTime() * 5)
+					BodyAnim:SetPos(easedpos)
+					BodyAnim:SetRenderOrigin(easedpos)
+				else
+					BodyAnim:SetPos(pos)
+					BodyAnim:SetRenderOrigin(pos)
+				end
+			elseif BodyAnimPosEaseLerp < 1 then
+				local easedpos = LerpVector(BodyAnimPosEaseLerp, BodyAnimPosEase, BodyAnimStartPos)
+				BodyAnimPosEaseLerp = math.Approach(BodyAnimPosEaseLerp, 1, FrameTime() * 5)
+
+				BodyAnim:SetPos(easedpos)
+				BodyAnim:SetRenderOrigin(easedpos)
+			end
+
+			local oldang = BodyAnim:GetAngles()
+			local eyeang = self.Player:EyeAngles()
+			eyeang.x = 0
+			eyeang.z = 0
+
+			if CamIgnoreAng then
+				BodyAnim:SetAngles(eyeang)
+			end
+
+			if lastatt and lastatt ~= camjoint then
+				savedatt = lastatt
+				lerpchangeatt = 0
+			end
+
+			local head = BodyAnim:LookupBone("ValveBiped.Bip01_Head1")
+
+			if head then
+				BodyAnim:ManipulateBonePosition(head, vector_origin)
+			end
+
+			attachId = BodyAnim:LookupAttachment(camjoint)
+			attach = BodyAnim:GetAttachment(attachId) or attach
+
+			if lerpchangeatt < 1 then
+				local attachId = BodyAnim:LookupAttachment(savedatt)
+
+				lastattdata = BodyAnim:GetAttachment(attachId) or attach
+				lerpedpos = LerpVector(lerpchangeatt, lastattdata.Pos, attach.Pos)
+				lerpchangeatt = math.Approach(lerpchangeatt, 1, FrameTime() * 5)
+			end
+
+			if not self.Player:ShouldDrawLocalPlayer() then
+				local head = BodyAnim:LookupBone("ValveBiped.Bip01_Head1")
+
+				if head then
+					BodyAnim:ManipulateBonePosition(head, Vector(-1000, 0, 0))
+				end
+			end
+
+			BodyAnim:SetAngles(oldang)
+		end
+
+		if attach ~= nil then
+			view.origin = has_tool_equipped and pos or attach.Pos
+
+			if savedeyeangb == Angle(0, 0, 0) then
+				savedeyeangb = Angle(0, attach.Ang.y, 0)
+			end
+
+			view.angles = self.Player:EyeAngles()
+
+			if lockang2 and not has_tool_equipped then
+				view.angles = has_tool_equipped and angles or attach.Ang
+				view.angles.x = self.Player:EyeAngles().x
+				view.origin = has_tool_equipped and pos or attach.Pos
+			end
+
+			allowedangchange = true
+
+			if lockang ~= lastlockang then
+				lerplockang = 0
+				lastlockang = lockang
+
+				lastlockangstart:Set(lasteyeang)
+			end
+
+			if self.Player:Alive() and (lockang and not has_tool_equipped) then
+				local attachId = BodyAnim:LookupAttachment(camjoint)
+				local attach = BodyAnim:GetAttachment(attachId) or attach
+				local ang = attach.Ang
+
+				if lerplockang < 1 then
+					ang = LerpAngle(lerplockang, lastlockangstart, attach.Ang)
+					lerplockang = math.Approach(lerplockang, 1, FrameTime() * 4.5)
+				end
+
+				view.angles = has_tool_equipped and angles or ang
+				view.angles:Add(ViewTiltAngle)
+				allowedangchange = false
+
+				local neweyeang = Angle(view.angles)
+				neweyeang.y = BodyAnim:GetAngles().y
+				neweyeang.z = 0
+
+				self.Player:SetEyeAngles(neweyeang)
+			end
+
+			lasteyeang:Set(self.Player:EyeAngles())
+
+			local vm = self.Player:GetViewModel()
+
+			BodyAnimEyeAng = attach.Ang
+			BodyAnimPos = attach.Pos
+			lastattachpos = attach.Pos
+			bodyanimlastattachang = self.Player:EyeAngles()
+			view.pos = attach.Pos
+
+			if not IsValid(BodyAnim) and endlerp < 1 then
+				endlerp = math.Approach(endlerp, 1, RealFrameTime() * 6)
+				attach.Pos = LerpVector(endlerp, attach.Pos, self.Player:EyePos())
+				attach.Ang = LerpAngle(endlerp * 2, attach.Ang, self.Player:EyeAngles() + self.Player:GetViewPunchAngles() + self.Player:GetCLViewPunchAngles())
+
+				if IsValid(vm) then
+					vm:SetNoDraw(false)
+				end
+			elseif not IsValid(BodyAnim) and endlerp == 1 then
+				attach = nil
+				endlerp = 0
+
+				if IsValid(vm) then
+					vm:SetNoDraw(false)
+				end
+
+				return
+			end
+
+			if not self.Player:ShouldDrawLocalPlayer() and not self.Player:InVehicle() then
+				local ang = Vector(view.angles:Unpack())
+				local FT = RealFrameTime()
+				ang[1] = 0
+				ang[3] = 0
+
+				local MEAng = ang.y
+				local target = not lockang and MEAng or self.Player.OrigEyeAng.y
+
+				viewtiltlerp.y = math.ApproachAngle(viewtiltlerp.y, target, FrameTime() * (1 + math.abs(math.AngleDifference(viewtiltlerp.y, target)) * 5))
+
+				local MEAngDiff = math.AngleDifference(viewtiltlerp.y, not lockang and lastangy or self.Player.OrigEyeAng.y) * 0.15
+
+				ViewTiltAngle = Angle(0, 0, MEAngDiff + viewtiltlerp.z)
+
+				view.angles:Add(ViewTiltAngle)
+
+				self.Player:SetNoDraw(false)
+
+				view.angles:Add(self.Player:GetViewPunchAngles() + self.Player:GetCLViewPunchAngles())
+
+				hook.Run("BodyAnimCalcView", view)
+
+				pos:Set(view.origin)
+
+				if not has_tool_equipped then
+					angles:Set(view.angles)
+				end
+
+				if lerpchangeatt < 1 then
+					pos:Set(lerpedpos)
+				end
+
+				camang = angles
+				campos = pos
+				lastatt = camjoint
+
+				if CamShake then
+					CamShakeAng:Set(AngleRand() * 0.005 * CamShakeMult)
+					angles:Add(CamShakeAng)
+				end
+
+				lastangy = ang.y
+				hook.Run("CalcViewBA", self.Player, pos, angles)
+
+				return
+			else
+				self.Player:SetNoDraw(true)
+			end
+		end
+
+		if attach == nil or CurTime() < (mantletimer or 0) then
+			view.origin = has_tool_equipped and pos or lastattachpos
+			pos:Set(lastattachpos)
+
+			return
+		end
+	end
 
 	if self.TauntCam:CalcView(view, self.Player, self.Player:IsPlayingTaunt()) then return true end
 end

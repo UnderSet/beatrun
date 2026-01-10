@@ -43,11 +43,6 @@ local function GetCurrentMapWorkshopID()
 end
 
 local function FetchCourse(url, headers)
-	if not LocalPlayer():IsSuperAdmin() then
-		print("You must be a Super Admin to load courses")
-		return
-	end
-
 	http.Fetch(url, function(body, length, _, code)
 		local response = util.JSONToTable(body)
 

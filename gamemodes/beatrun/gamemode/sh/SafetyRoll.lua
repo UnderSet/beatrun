@@ -97,12 +97,10 @@ hook.Add("SetupMove", "SafetyRoll", function(ply, mv, cmd)
 			mv:SetVelocity(vector_origin)
 		end
 
-		timer.Simple(1, function()
-			if ply:Alive() and IsValid(ply:GetActiveWeapon()) and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
-				RunConsoleCommand("mgbase_debug_vmrender", "1")
-			end
-		end)
-	end
+	-- FIXME: Broken
+	-- if ply:Alive() and IsValid(ply:GetActiveWeapon()) and CurTime() > ply:GetSafetyRollTime() and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
+	-- 	RunConsoleCommand("mgbase_debug_vmrender", "1")
+	-- end
 end)
 
 net.Receive("RollAnimSP", function()
@@ -141,13 +139,10 @@ end)
 
 hook.Add("SetupMove", "EvadeRoll", function(ply, mv, cmd)
 	if ply:GetJumpTurn() and ply:OnGround() and mv:KeyPressed(IN_BACK) then
-		if SERVER then
-			ply:DrawViewModel(false)
-		end
-
-		if ply:Alive() and IsValid(ply:GetActiveWeapon()) and CurTime() > ply:GetSafetyRollTime() and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
-			RunConsoleCommand("mgbase_debug_vmrender", "0")
-		end
+		-- FIXME: Broken
+		-- if ply:Alive() and IsValid(ply:GetActiveWeapon()) and CurTime() > ply:GetSafetyRollTime() and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
+		-- 	RunConsoleCommand("mgbase_debug_vmrender", "0")
+		-- end
 
 		local ang = cmd:GetViewAngles()
 
@@ -212,9 +207,10 @@ hook.Add("OnPlayerHitGround", "SafetyRoll", function(ply, water, floater, speed)
 	local sang = normal:Angle()
 
 	if sang.x <= 314 and not ply:InOverdrive() and (speed >= 350 or ply:GetDive()) and speed < 800 and (CurTime() < ply:GetSafetyRollKeyTime() and not ply:GetDive() or ply:GetDive() and not ply:KeyDown(IN_DUCK)) and not ply:GetJumpTurn() and (not ply:Crouching() or ply:GetDive()) then
-		if ply:Alive() and IsValid(ply:GetActiveWeapon()) and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
-			RunConsoleCommand("mgbase_debug_vmrender", "0")
-		end
+		-- FIXME: Broken
+		-- if ply:Alive() and IsValid(ply:GetActiveWeapon()) and CurTime() > ply:GetSafetyRollTime() and weapons.IsBasedOn(ply:GetActiveWeapon():GetClass(), "mg_base") then
+		-- 	RunConsoleCommand("mgbase_debug_vmrender", "0")
+		-- end
 
 		ply:SetCrouchJump(false)
 		ply:SetDive(false)

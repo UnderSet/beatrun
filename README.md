@@ -14,7 +14,8 @@ Yet another unofficial fork of that one Garry's Mod gamemode. Based off of [this
 
 ## About
 
-A parkour gamemode for *Garry's Mod*, originally made by datae. Now maintained by a small community.
+Beatrun is an **infamous parkour addon for Garry's Mod**, now fully open-sourced and maintained by the community.
+It includes various improvements, new features, and enhanced functionality.
 
 > [!WARNING]
 > This repository contains ***optional modules***, they are ***not required for play*** unlike datae's version.
@@ -90,4 +91,12 @@ A parkour gamemode for *Garry's Mod*, originally made by datae. Now maintained b
 - [Fluffy Servers](https://github.com/fluffy-servers) - Discord Rich Presence.
 - [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ) - Steam Presence (TFA Base creator).
 
-[^1] "Unfortunately" this version is *incompatible* with datae's course database due to changes in the online functionality code.
+## Star History
+
+<a href="https://www.star-history.com/#JonnyBro/beatrun&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&legend=top-left" />
+ </picture>
+</a>

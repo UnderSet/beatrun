@@ -92,7 +92,9 @@ It includes various improvements, new features, and enhanced functionality.
 - [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ) - Steam Presence (TFA Base creator).
 
 ### Fonts
+
 > They could be wrong, I tried to searh for the original sources.
+
 - [x14y24pxHeadUpDaisy](https://hicchicc.github.io/00ff/)
 - [Datto D-DIN](https://github.com/amcchord/datto-d-din)
 - [ProFontWindows](https://github.com/chrissimpkins/codeface/tree/master/fonts/pro-font-windows)

@@ -9,17 +9,30 @@ Yet another unofficial fork of that one Garry's Mod gamemode. Based off of [this
 
 > [!NOTE]
 > Once again, this repository is based off of [this](https://github.com/jonnybro/beatrun), which is maintained by the people who cracked Beatrun originally.
+# Beatrun (unofficial fork)
+
+Yet another unofficial fork of that one Garry's Mod gamemode. Based off of [this](https://github.com/jonnybro/beatrun) by *[JonnyBro](https://github.com/jonnybro)*.
+
+> [!CAUTION]
+> Read this *thoroughly* before asking questions, please.
+>
+> This isn't a legal project in case you can't tell, so licenses don't really apply.
+
+> [!NOTE]
+> Once again, this repository is based off of [this](https://github.com/jonnybro/beatrun), which is maintained by the people who cracked Beatrun originally.
 
 ---
 
 ## About
 
-Beatrun is an **infamous parkour addon for Garry's Mod**, now fully open-sourced and maintained by the community.
-It includes various improvements, new features, and enhanced functionality.
+A parkour gamemode for *Garry's Mod*, originally made by datae. Now maintained by a small community.
 
 > [!WARNING]
 > This repository contains ***optional modules***, they are ***not required for play*** unlike datae's version.
+> This repository contains ***optional modules***, they are ***not required for play*** unlike datae's version.
 >
+> - Modules are [Steam Presence by YuRaNnNzZZ](https://github.com/YuRaNnNzZZ/gmcl_steamrichpresencer) and [Discord Rich Presence by Fluffy Servers](https://github.com/fluffy-servers/gmod-discord-rpc).
+> - [Located under **`/lua/bin`** in this repository.](lua/bin).
 > - Modules are [Steam Presence by YuRaNnNzZZ](https://github.com/YuRaNnNzZZ/gmcl_steamrichpresencer) and [Discord Rich Presence by Fluffy Servers](https://github.com/fluffy-servers/gmod-discord-rpc).
 > - [Located under **`/lua/bin`** in this repository.](lua/bin).
 
@@ -32,6 +45,11 @@ It includes various improvements, new features, and enhanced functionality.
 3. Extract `beatrun-main` into `garrysmod/addons`.
 4. (Optional) For Discord and Steam Presence, move `garrysmod/addons/beatrun-main/lua` to `garrysmod`.
 5. You're done, there isn't a step 5 to installing.
+1. **[Download this repository](https://github.com/UnderSet/beatrun/archive/refs/heads/master.zip).** *(You can also use the green **Code** button above if you're viewing the whole repository instead of just this file.)*
+2. Delete the `beatrun` folder in `garrysmod/addons`, if it exists.
+3. Extract `beatrun-main` into `garrysmod/addons`.
+4. (Optional) For Discord and Steam Presence, move `garrysmod/addons/beatrun-main/lua` to `garrysmod`.
+5. You're done, there isn't a step 5 to installing.
 
 ---
 
@@ -39,6 +57,7 @@ It includes various improvements, new features, and enhanced functionality.
 
 ### New Features
 
+- **Custom Courses Database** hosted by Jonny_Bro: **[Access Here](https://courses.jonnybro.ru)** (free and **[open source](https://git.jonnybro.ru/jonny_bro/beatrun-courses-server)**).
 - **Custom Courses Database** hosted by Jonny_Bro: **[Access Here](https://courses.jonnybro.ru)** (free and **[open source](https://git.jonnybro.ru/jonny_bro/beatrun-courses-server)**).
 - **New Gamemode:** Deathmatch.
 - 3 animation sets: a new, original one by MTB; a fixed version of *Mirror's Edge*'s animations, and an unfixed version of *Mirror's Edge*'s animations *(some want that, okay?!)*.
@@ -62,10 +81,14 @@ It includes various improvements, new features, and enhanced functionality.
     - `Beatrun_KickGlitch`: Toggle between the kickglitch modes *(disabled, datae (velocity multiplier), Mirror's Edge (invisible platform))*
     - `Beatrun_QuickturnHandsOnly`: Restrict Quickturn to the Runner Hands weapon.
 - Likely more, go check the Git commit history.
+    - `Beatrun_KickGlitch`: Toggle between the kickglitch modes *(disabled, datae (velocity multiplier), Mirror's Edge (invisible platform))*
+    - `Beatrun_QuickturnHandsOnly`: Restrict Quickturn to the Runner Hands weapon.
+- Likely more, go check the Git commit history.
 - Other improvements:
   - Small camera punch effect when diving.
   - SteamID no longer displayed on screen.
 
+### Other Fixes
 ### Other Fixes
 
 - Fixed playermodels showing as `ERROR` in first person.
@@ -85,9 +108,15 @@ It includes various improvements, new features, and enhanced functionality.
 ## Credits
 
 - **All contributors ([original repository](https://github.com/JonnyBro/beatrun/graphs/contributors), [this repository](https://github.com/UnderSet/beatrun/graphs/contributors))** ❤️
+- **All contributors ([original repository](https://github.com/JonnyBro/beatrun/graphs/contributors), [this repository](https://github.com/UnderSet/beatrun/graphs/contributors))** ❤️
 - [EarthyKiller127/datae](https://www.youtube.com/channel/UCiFqPwGo4x0J65xafIaECDQ) - Original creator of Beatrun.
+- [relaxtakenotes](https://github.com/relaxtakenotes) - Made this project possible.
 - [relaxtakenotes](https://github.com/relaxtakenotes) - Made the original project - and by extension this project - possible.
 - [MTB](https://www.youtube.com/@MTB396) - Beatrun Reanimated Project.
+- [Fluffy Servers](https://github.com/fluffy-servers) - Discord Rich Presence.
+- [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ) - Steam Presence (TFA Base creator).
+
+[^1] "Unfortunately" this version is *incompatible* with datae's course database due to changes in the online functionality code.
 - [Fluffy Servers](https://github.com/fluffy-servers) - Discord Rich Presence.
 - [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ) - Steam Presence (TFA Base creator).
 

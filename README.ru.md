@@ -26,7 +26,7 @@
 
 ## О проекте
 
-Beatrun - это **знаменитый паркур-аддон для Garry's Mod**, теперь с полностью открытым исходным кодом и поддерживаемый сообществом.
+Beatrun - это **знаменитый паркур режим для Garry's Mod**, теперь с полностью открытым исходным кодом и поддерживаемый сообществом.
 Включает различные улучшения, новые функции и расширенную функциональность.
 
 > [!WARNING]
@@ -147,27 +147,3 @@ irm https://beatrun.jbro.top/install | iex
 - [MTB](https://www.youtube.com/@MTB396) - проект Beatrun Reanimated.
 - [Fluffy Servers](https://github.com/fluffy-servers/gmod-discord-rpc) - модуль показа статусов в Discord.
 - [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ/gmcl_steamrichpresencer) - модуль показа статусов в Steam (создатель TFA Base).
-- [EarthyKiller127/datae](https://www.youtube.com/channel/UCiFqPwGo4x0J65xafIaECDQ) - создатель оригинального Beatrun.
-- [relaxtakenotes](https://github.com/relaxtakenotes) - этот проект стал возможен благодаря ему.
-- [MTB](https://www.youtube.com/@MTB396) - проект Beatrun Reanimated.
-- [Fluffy Servers](https://github.com/fluffy-servers/gmod-discord-rpc) - модуль показа статусов в Discord.
-- [YuRaNnNzZZ](https://github.com/YuRaNnNzZZ/gmcl_steamrichpresencer) - модуль показа статусов в Steam (создатель TFA Base).
-
-### Шрифты
-
-> Могут быть ошибочными, я старался найти оригиналы.
-
-- [x14y24pxHeadUpDaisy](https://hicchicc.github.io/00ff/)
-- [Datto D-DIN](https://github.com/amcchord/datto-d-din)
-- [ProFontWindows](https://github.com/chrissimpkins/codeface/tree/master/fonts/pro-font-windows)
-
-## Звёздочки
-
-<!-- markdownlint-disable MD033 -->
-<a href="https://www.star-history.com/#JonnyBro/beatrun&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=JonnyBro/beatrun&type=date&legend=top-left" />
- </picture>
-</a>
